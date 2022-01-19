@@ -1,0 +1,30 @@
+<form #login="ngForm" (ngSubmit)="onSubmit()">
+  <!-- Método onSubmit criado no ts  -->
+  <h3 class="mat-h3">Bem-vindo(a) de volta!</h3>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput name="email" ngModel required />
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input type="password" matInput name="password" ngModel required/>
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <!-- login faz referência ao nome do form, linha 1 - #login -->
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="login.invalid"
+    >
+    Entrar
+  </button>
+</form>
