@@ -1,0 +1,8 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyDz-Lx73QjVcHVRqL3gDQ5jAeIMvVnPDLg",
+  authDomain: "filmflix-576cc.firebaseapp.com",
+  projectId: "filmflix-576cc",
+  storageBucket: "filmflix-576cc.appspot.com",
+  messagingSenderId: "733433679384",
+  appId: "1:733433679384:web:9f9933a7ce7db84129bd6d"
+};
