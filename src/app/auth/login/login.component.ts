@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
         //para visulizar o erro previamente
         //console.log(err.code);
         //alert(err.code);
-        let message = "";
+        let message = 'Ocorreu um erro';
 
         switch(err.code){
           case "auth/invalid-email":
-            message = 'Emailinválido!';
+            message = 'Email inválido!';
             break;
           case 'auth/user-not-found':
             message = 'Usuário não encontrado';

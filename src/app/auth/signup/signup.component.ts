@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
         this.snackbar.open(err.code, 'Fechar', {
           duration: 5000,
           horizontalPosition: 'end',
-        })
+        });
       },
     });
   }
