@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from './../shared/material/material.module';
 import { HeaderComponent } from './components/header/header.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
