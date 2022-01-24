@@ -1,1 +1,67 @@
-<p>home works!</p>
+<div class="grid" *ngIf="trending$ | async as results">
+  <!-- Grid de divisão dos posteres -->
+  <mat-grid-list cols="6" rowHeight="3:4" gutterSize="8" class="results">
+    <!-- Título -->
+    <h2 class="mat-h2">Tendências</h2>
+    <!-- Link Poster -->
+    <a
+      routerLink="{{ result.media_type }}/{{ result.id }}"
+      *ngFor="let result of results"
+      [title]="result.title || result.name"
+    >
+      <mat-grid-tile class="rounded-tile">
+        <div>
+          <img
+            class="poster-image"
+            [src]="createImageLink(result.poster_path)"
+            [alt]="result.title || result.name"
+          />
+        </div>
+      </mat-grid-tile>
+    </a>
+  </mat-grid-list>
+</div>
+<!-- Busca -->
+<div class="search-area">
+  <h2 class="mat-h2">Buscar</h2>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Busca</mat-label>
+      <input matInput #searchInput />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </p>
+  <mat-divider></mat-divider>
+  <!-- Link Posteres resultado da Busca -->
+  <div *ngIf="results$ | async as search; else searchEmpty">
+    <mat-grid-list cols="6" rowHeight="3:4" gutterSize="8" class="results">
+        <!-- TODO: Componentizar resultado da grid -->
+        <!-- Essa versão foi transferida para result-tile.component.html -->
+        <a
+          routerLink="{{ result.media_type }}/{{ result.id }}"
+          *ngFor="let result of search"
+          [title]="result.title || result.name"
+        >
+          <mat-grid-tile class="rounded-tile">
+            <div>
+              <img
+                class="poster-image"
+                [src]="createImageLink(result.poster_path)"
+                [alt]="result.title || result.name"
+              />
+            </div>
+          </mat-grid-tile>
+        </a>
+
+        <!-- Não foram exibidos os resultados, componentização falhando -->
+        <!-- <app-result-tile
+          *ngFor="let result of search"
+          [result]="result"
+        ></app-result-tile> -->
+
+      </mat-grid-list>
+  </div>
+  <ng-template #searchEmpty>
+    <h2 class="mat-h2">Busque seus filmes/séries favoritos</h2>
+  </ng-template>
+</div>
