@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 
 import { MovieTvBase } from '../../models/movie-tv-base';
 
+
 type ApiResponse = {page: number, results: MovieTvBase[]};
 
 @Injectable({
@@ -19,12 +20,14 @@ export class TmdbApiService {
 
   constructor(private http: HttpClient) { }
 
+  //Método para exibição de tendências
   trending(): Observable<MovieTvBase[]> {
     return this.http.get<ApiResponse>(`${this.baseUrl}/trending/all/week`, {
       params: this.options,
     }).pipe(map(data => data.results));
   }
 
+  //Método de Busca
   search(query: string): Observable<MovieTvBase[]> {
     return this.http.get<ApiResponse>(`${this.baseUrl}/search/multi`, {
       params: {
@@ -33,5 +36,12 @@ export class TmdbApiService {
         query: query,
       },
     }).pipe(map((data) => data.results));
+  }
+
+  //Método
+  getDatailById(id: number, type: 'movie' | 'tv'): Observable<MovieTvBase> {
+    return this.http.get<MovieTvBase>(`${this.baseUrl}/${type}/${id}`, {
+      params: this.options,
+    });
   }
 }
